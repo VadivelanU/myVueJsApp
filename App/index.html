@@ -4,13 +4,28 @@
     <title>
         myVueJsApp
     </title>
+    <!--vuejs cdn-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
     <div id="myVueJsApp">
+        <!--Methods and Variable-->
+        <h1>{{greetUser()}}</h1>
         {{helloWorldText}}
+        <br />
+        <!--Not Working Scenario-->
+        {{dateTimeInfo}}
+        {{getDateTimeInformation()}}
+        {{dateTimeInfo}}
+        <br />
+        <!--Data Binding v-bind or : and v-html-->
+        <img :src="imageUrl" width="50" height="50" />
+        <p v-html="pInnerHtml"></p>
+        <!--Not Working Scenario-->
+        <p v-html="pInnerHtmlNotWorking"></p>
+        <br />
     </div>
-    <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
