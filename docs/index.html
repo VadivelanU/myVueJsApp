@@ -4,12 +4,40 @@
     <title>
         myVueJsApp
     </title>
+    <!--vuejs cdn-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
     <div id="myVueJsApp">
+        <!--Methods and Variable-->
+        <h1>{{greetUser()}}</h1>
         {{helloWorldText}}
+        <br />
+        <!--Working Scenario-->
+        {{dateTimeInfo}}
+        {{getDateTimeInformation()}}
+        {{dateTimeInfo}}
+        <br />
+        <!--Data Binding v-bind or : and v-html-->
+        <img :src="imageUrl" width="50" height="50" />
+        <p v-html="pInnerHtml"></p>
+        <!--Not Working Scenario-->
+        <p v-html="pInnerHtmlNotWorking"></p>
+        <br />
+        <!--two way binding try--><!--Doesnt work so : and v-bind is just single way bind model to UI-->
+        <input type="text" name="name" v-bind:value="userName" />
+        {{userName}}
+        <br />
+        <!--Events-->
+        <button v-on:click="handleButtonClick()">Click Me!</button>
+        <button @click="handleButtonClick()">Click Me!</button>
+        <!--Event Modifiers -> adding addition info/features to the events-->
+        <button v-on:click.once="handleButtonClick">Click Me! I will work only once</button>
+        <br /> i console log on all keydown :<input type="text" v-on:keydown="keyDownHandler" />
+        <br /> i console log on only enter click :<input type="text" v-on:keydown.enter="keyDownHandler" />
+        <br /> i console log on only alt -> enter click :<input type="text" v-on:keydown.alt.enter="keyDownHandler" />
     </div>
     <script src="app.js"></script>
 </body>
