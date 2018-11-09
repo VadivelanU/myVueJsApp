@@ -1,11 +1,12 @@
 new Vue({
     el: "#myVueJsApp",
     data: {
-        dateTimeInfo:"PreviousValue",
+        dateTimeInfo: "PreviousValue",
         helloWorldText: "Helloworld",
         imageUrl: "logo.png",
         pInnerHtml: '<img src="logo.png" width="50" height="50" />',
         pInnerHtmlNotWorking: '<img :src="imageUrl" width="50" height="50" />',
+        userName: "Unknown"
     },
     methods: {
         greetUser: function () {
@@ -18,13 +19,23 @@ new Vue({
             } else {
                 return "Good Evening."
             }
+            //Not working
+            setInterval(this.getDateTimeInformation(), 500);
         },
         getDateTimeInformation: function () {
             var date = new Date();
-            dateTimeInfo = "Current Time : " + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + " TimeZone-Offset: " + date.getTimezoneOffset() / 60;
-            console.log(dateTimeInfo);
-            //setTimeout(getDateTimeInformation(), 500);
+            this.dateTimeInfo = "Current Time : " + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + " TimeZone-Offset: " + date.getTimezoneOffset() / 60;
+            console.log(this.dateTimeInfo);
+            //Not working as expected
+            //setTimeout(this.getDateTimeInformation(), 500);
+            //setInterval(this.getDateTimeInformation(), 500);
             return true;
+        },
+        handleButtonClick: function() {
+            alert("Button Clicked");
+        },
+        keyDownHandler: function (event) {
+            console.log(event);
         }
     }
 });
