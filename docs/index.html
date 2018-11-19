@@ -16,7 +16,7 @@
         {{helloWorldText}}
         <br />
         <!--Working Scenario-->
-        {{dateTimeInfo}}
+        {{dateTimeInfo}} <!--but previous value is already updated-->
         {{getDateTimeInformation()}}
         {{dateTimeInfo}}
         <br />
@@ -31,14 +31,44 @@
         {{userName}}
         <br />
         <!--Events-->
-        <button v-on:click="handleButtonClick()">Click Me!</button>
-        <button @click="handleButtonClick()">Click Me!</button>
+        <button v-on:click="handleButtonClick()">v-on:click Click Me!</button>
+        <button @click="handleButtonClick()">@click Click Me!</button>
         <!--Event Modifiers -> adding addition info/features to the events-->
-        <button v-on:click.once="handleButtonClick">Click Me! I will work only once</button>
+        <button v-on:click.once="handleButtonClick">v-on:click.once Click Me! I will work only once</button>
         <br /> i console log on all keydown :<input type="text" v-on:keydown="keyDownHandler" />
         <br /> i console log on only enter click :<input type="text" v-on:keydown.enter="keyDownHandler" />
         <br /> i console log on only alt -> enter click :<input type="text" v-on:keydown.alt.enter="keyDownHandler" />
+
+        <!--If control structure-->
+        <input type="checkbox" v-on:click="showHiddenMessage=!showHiddenMessage" /> Show hidden message.
+        <span v-if="showHiddenMessage"> Hi, I am the hidden message. </span>
+
+        <br />
+        <!--Forloop example-->
+        Test Car Array data
+        <ol>
+            <li v-for="car in testCarData">{{car.name}}</li>
+        </ol>
+
+        <!--Two way binding-->
+        <input type="text" v-model="inputData">
+        input data currently is : {{inputData}}
+
+        <br />
+        <br />
+        <!--Components-->
+        <component-selector id="component1" v-bind:inputdata1="inputData" v-bind:inputdata2="userName">Loading..</component-selector>
+        <br />
+        <component-selector id="component2" v-bind:inputdata1="inputData" v-bind:inputdata2="userName">Loading..</component-selector>
+        <br />
+        <!--Two way data binding in components-->
+        <!--method 1 event emit-->
+        <component1-selector v-bind:inputdata1="inputDataFor2wayComponent" v-on:value-changed="childUpdatedValue"></component1-selector>
+        <!--method 2 v-models-->
+        <component1-selector v-model="inputDataFor2wayComponent2"></component1-selector>
     </div>
+    <script src="test-component-for-2waydatapassing.component.js"></script>
+    <script src="test-component.component.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

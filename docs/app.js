@@ -6,7 +6,19 @@ new Vue({
         imageUrl: "logo.png",
         pInnerHtml: '<img src="logo.png" width="50" height="50" />',
         pInnerHtmlNotWorking: '<img :src="imageUrl" width="50" height="50" />',
-        userName: "Unknown"
+        userName: "Unknown",
+        showHiddenMessage: false,
+        testCarData: [
+            { name: "BMW" },
+            { name: "Benz" },
+            { name: "Ferrari" },
+            { name: "Lamborghini" },
+            { name: "Rolls Royce" },
+            { name: "Porsche" }
+        ],
+        inputData: '',
+        inputDataFor2wayComponent: 'FromParent',
+        inputDataFor2wayComponent2: 'FromParent',
     },
     methods: {
         greetUser: function () {
@@ -31,11 +43,16 @@ new Vue({
             //setInterval(this.getDateTimeInformation(), 500);
             return true;
         },
-        handleButtonClick: function() {
+        handleButtonClick: function () {
             alert("Button Clicked");
         },
         keyDownHandler: function (event) {
             console.log(event);
+        },
+        childUpdatedValue: function (value) {
+            console.log(value + "Event triggered in parent.");
+            this.inputDataFor2wayComponent = value;
+            alert("Value updated in parent level " + this.inputDataFor2wayComponent);
         }
     }
 });
