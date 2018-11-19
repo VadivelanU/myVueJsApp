@@ -16,7 +16,9 @@ new Vue({
             { name: "Rolls Royce" },
             { name: "Porsche" }
         ],
-        inputData: ''
+        inputData: '',
+        inputDataFor2wayComponent: 'FromParent',
+        inputDataFor2wayComponent2: 'FromParent',
     },
     methods: {
         greetUser: function () {
@@ -46,6 +48,11 @@ new Vue({
         },
         keyDownHandler: function (event) {
             console.log(event);
+        },
+        childUpdatedValue: function (value) {
+            console.log(value + "Event triggered in parent.");
+            this.inputDataFor2wayComponent = value;
+            alert("Value updated in parent level " + this.inputDataFor2wayComponent);
         }
     }
 });

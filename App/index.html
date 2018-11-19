@@ -60,7 +60,14 @@
         <component-selector id="component1" v-bind:inputdata1="inputData" v-bind:inputdata2="userName">Loading..</component-selector>
         <br />
         <component-selector id="component2" v-bind:inputdata1="inputData" v-bind:inputdata2="userName">Loading..</component-selector>
+        <br />
+        <!--Two way data binding in components-->
+        <!--method 1 event emit-->
+        <component1-selector v-bind:inputdata1="inputDataFor2wayComponent" v-on:value-changed="childUpdatedValue"></component1-selector>
+        <!--method 2 v-models-->
+        <component1-selector v-model="inputDataFor2wayComponent2"></component1-selector>
     </div>
+    <script src="test-component-for-2waydatapassing.component.js"></script>
     <script src="test-component.component.js"></script>
     <script src="app.js"></script>
 </body>
