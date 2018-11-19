@@ -6,7 +6,17 @@ new Vue({
         imageUrl: "logo.png",
         pInnerHtml: '<img src="logo.png" width="50" height="50" />',
         pInnerHtmlNotWorking: '<img :src="imageUrl" width="50" height="50" />',
-        userName: "Unknown"
+        userName: "Unknown",
+        showHiddenMessage: false,
+        testCarData: [
+            { name: "BMW" },
+            { name: "Benz" },
+            { name: "Ferrari" },
+            { name: "Lamborghini" },
+            { name: "Rolls Royce" },
+            { name: "Porsche" }
+        ],
+        inputData: ''
     },
     methods: {
         greetUser: function () {
@@ -31,7 +41,7 @@ new Vue({
             //setInterval(this.getDateTimeInformation(), 500);
             return true;
         },
-        handleButtonClick: function() {
+        handleButtonClick: function () {
             alert("Button Clicked");
         },
         keyDownHandler: function (event) {
