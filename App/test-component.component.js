@@ -26,5 +26,12 @@ Vue.component('component-selector',
             "2 way binded data : <input type='text' v-model='unshareddata' />" +
             //1 way
             "1 way binded data :<input type='text' v-bind:value='unshareddata' />" +
-            "</div>"
+
+            //embedding the nested local component
+            "<local-component>Loading Local component.</local-component>" +
+            "</div>",
+        //LocalComponent Now child component is only known by the parent component
+        components: {
+            'local-component': localComponent,
+        }
     });
